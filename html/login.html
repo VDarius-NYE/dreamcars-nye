@@ -8,34 +8,38 @@
 </head>
 <body>
   <header>
-    <h1>DreamCars Project</h1>
-    <nav>
-      <a href="index.html">Kezdőlap</a>
-      <a href="cars.html">Autók</a>
-      <a href="booking.html">Foglalás</a>
-      <a href="login.html" class="active">Bejelentkezés</a>
-      <a href="register.html">Regisztráció</a>
-    </nav>
+        <h1>DreamCars Project</h1>
+        <nav>
+            <div class="menu-toggle" id="menu-toggle">☰</div>
+            <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Kezdőlap</a></li>
+            <li><a href="cars.html">Autók</a></li>
+            <li><a href="booking.html">Foglalás</a></li>
+            <li><a href="login.html">Bejelentkezés</a></li>
+            <li><a href="register.html">Regisztráció</a></li>
+            </ul>
+        </nav>
   </header>
 
   <main>
     <div class="form-container">
-      <h2>Bejelentkezés</h2>
-      <form>
-        <label for="email">Email cím:</label>
-        <input type="email" id="email" name="email" required>
+        <h2>Bejelentkezés</h2>
+        <form action="../php/login.php" method="POST">
+            <label for="email">Email cím:</label>
+            <input type="email" id="email" name="email" required>
 
-        <label for="password">Jelszó:</label>
-        <input type="password" id="password" name="password" required>
+            <label for="password">Jelszó:</label>
+            <input type="password" id="password" name="password" required>
 
-        <button type="submit">Belépés</button>
-        <p class="redirect-text">Nincs még fiókod? <a href="register.html">Regisztrálj itt</a></p>
-      </form>
+            <button type="submit">Belépés</button>
+            <p class="redirect-text">Nincs még fiókod? <a href="register.html">Regisztrálj itt</a></p>
+        </form>
     </div>
   </main>
 
   <footer>
     <p>© 2025 DreamCars Project – Minden jog fenntartva</p>
   </footer>
+  <script src="../js/main.js"></script>
 </body>
 </html>
