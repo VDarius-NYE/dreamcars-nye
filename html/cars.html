@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DreamCars Project</title>
+  <link rel="icon" type="png" href="../assets/favicon.png">
+
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header>
+    <h1>Autóink</h1>
+     <nav>
+      <a href="index.html">Kezdőlap</a>
+      <a href="cars.html">Autók</a>
+      <a href="booking.html">Foglalás</a>
+      <a href="login.html">Bejelentkezés</a>
+      <a href="register.html">Regisztráció</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="car-selector">
+  <h2>Válassz autót</h2>
+  <select id="car-select">
+    <option value="" selected disabled>Válassz egy autót...</option>
+    <option value="gt-r">Nissan GT-R</option>
+    <option value="bmw-m4">BMW M4</option>
+    <option value="ford-mustang">Ford Mustang</option>
+  </select>
+
+  <div id="car-details" class="car-details">
+    <!-- Itt jelenik meg a részletes leírás -->
+  </div>
+
+  <button id="book-btn" class="booking-btn" style="display:none;">
+  Foglalás
+</button>
+</section>
+  </main>
+
+  <footer>
+    <p>© 2025 DreamCars Project – Minden jog fenntartva</p>
+  </footer>
+
+    <script src="../js/cars.js"></script>
+</body>
+</html>
