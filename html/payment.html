@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fizetés - DreamCars</title>
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/payment.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <header>
+    <h1>Fizetés</h1>
+    <nav>
+      <div class="menu-toggle" id="menu-toggle">☰</div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Kezdőlap</a></li>
+        <li><a href="cars.html">Autók</a></li>
+        <li><a href="booking.html">Foglalás</a></li>
+        <li><a href="login.html">Bejelentkezés</a></li>
+        <li><a href="register.html">Regisztráció</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="payment-page">
+    <div class="payment-container">
+      
+      <!-- Foglalás összegzés -->
+      <div class="order-summary">
+        <h2><i class="fas fa-file-invoice"></i> Foglalás Részletei</h2>
+        <div class="summary-details" id="summary-details">
+          <div class="loading-payment">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Betöltés...</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fizetési form -->
+      <div class="payment-form-card">
+        <h2><i class="fas fa-credit-card"></i> Fizetési Adatok</h2>
+        
+        <form id="payment-form">
+          <div class="payment-methods">
+            <label class="payment-method active">
+              <input type="radio" name="payment-method" value="card" checked>
+              <i class="fas fa-credit-card"></i>
+              <span>Bankkártya</span>
+            </label>
+            <label class="payment-method">
+              <input type="radio" name="payment-method" value="paypal">
+              <i class="fab fa-paypal"></i>
+              <span>PayPal</span>
+            </label>
+          </div>
+
+          <div id="card-payment" class="payment-section">
+            <div class="form-group">
+              <label for="card-number">
+                <i class="fas fa-credit-card"></i> Kártyaszám
+              </label>
+              <input type="text" id="card-number" placeholder="1234 5678 9012 3456" maxlength="19" required>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="card-expiry">
+                  <i class="fas fa-calendar"></i> Lejárat
+                </label>
+                <input type="text" id="card-expiry" placeholder="MM/YY" maxlength="5" required>
+              </div>
+              <div class="form-group">
+                <label for="card-cvv">
+                  <i class="fas fa-lock"></i> CVV
+                </label>
+                <input type="text" id="card-cvv" placeholder="123" maxlength="3" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="card-name">
+                <i class="fas fa-user"></i> Kártyabirtokos neve
+              </label>
+              <input type="text" id="card-name" placeholder="Kovács János" required>
+            </div>
+          </div>
+
+          <div id="paypal-payment" class="payment-section" style="display:none;">
+            <div class="paypal-info">
+              <i class="fab fa-paypal"></i>
+              <p>A fizetés gomb megnyomása után átirányítunk a PayPal oldalára.</p>
+            </div>
+          </div>
+
+          <div class="security-info">
+            <i class="fas fa-shield-alt"></i>
+            <span>A fizetés biztonságos SSL titkosítással védett</span>
+          </div>
+
+          <button type="submit" class="pay-button">
+            <i class="fas fa-lock"></i> Fizetés: <span id="pay-amount">0 Ft</span>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Siker modal -->
+    <div id="success-modal" class="modal">
+      <div class="modal-content success">
+        <div class="success-icon">
+          <i class="fas fa-check-circle"></i>
+        </div>
+        <h2>Sikeres Foglalás!</h2>
+        <p>A fizetés sikeresen megtörtént.</p>
+        <p>A foglalás visszaigazolást emailben is elküldtük.</p>
+        <button onclick="window.location.href='index.html'" class="btn-primary">
+          Vissza a Főoldalra
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 DreamCars Project – Minden jog fenntartva</p>
+  </footer>
+
+  <script src="../js/auth.js"></script>
+  <script src="../js/payment.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

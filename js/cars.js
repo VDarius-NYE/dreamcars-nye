@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (!brand) {
       elements.filterPanel.style.display = 'none';
-      elements.carDetails.innerHTML = '<div class="empty-message" style="grid-column: 1 / -1;"><p>🚗 Válassz egy márkát a keresés megkezdéséhez!</p></div>';
+      elements.carDetails.innerHTML = '<div class="empty-message" style="grid-column: 1 / -1;"><p>Válassz egy márkát a keresés megkezdéséhez!</p></div>';
       return;
     }
 
@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!cars || cars.length === 0) {
       elements.carDetails.innerHTML = `
         <div class="empty-message">
-          <p>😔 Nincs találat a megadott szűrőkkel.</p>
+          <p>Nincs találat a megadott szűrőkkel.</p>
           <p style="font-size: 0.9rem; margin-top: 10px;">Próbálj más szűrőket használni!</p>
         </div>
       `;
@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
               </ul>
             </div>
             <button class="car-book-btn" data-car-id="${car.id}" data-car-name="${car.nev}">
-              🎫 Foglalás
+              Foglalás
             </button>
           </div>
         </div>
@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function() {
   function showLoading(element, message) {
     element.innerHTML = `
       <div style="text-align: center; padding: 40px; color: #999;">
-        <p style="font-size: 1.2rem;">⏳ ${message}</p>
+        <p style="font-size: 1.2rem;">${message}</p>
       </div>
     `;
   }
@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', function() {
   function showError(message) {
     elements.carDetails.innerHTML = `
       <div style="text-align: center; padding: 40px; color: #e50914;">
-        <p style="font-size: 1.2rem;">❌ ${message}</p>
+        <p style="font-size: 1.2rem;">${message}</p>
         <p style="font-size: 0.9rem; margin-top: 10px; color: #999;">Ellenőrizd a konzolt további információkért!</p>
       </div>
     `;

@@ -1,7 +1,6 @@
 <?php
 require_once 'session_handler.php';
 
-// Ha már be van jelentkezve, irányítsuk át
 redirectIfLoggedIn();
 
 $servername = "localhost";
@@ -21,7 +20,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = trim($_POST["email"]);
     $password = $_POST["password"];
 
-    // Validációk
     if (strlen($fullname) < 3) {
         echo "<script>
             alert('A teljes névnek legalább 3 karakter hosszúnak kell lennie!');
@@ -54,10 +52,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     $checkEmail->close();
 
-    // Jelszó hashelése
+    // Jelszó hashelés
     $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
-    // Felhasználó beszúrása
     $stmt = $conn->prepare("INSERT INTO users (fullname, email, password) VALUES (?, ?, ?)");
     $stmt->bind_param("sss", $fullname, $email, $hashedPassword);
 

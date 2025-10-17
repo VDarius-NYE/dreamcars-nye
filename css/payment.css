@@ -1,0 +1,366 @@
+/* PAYMENT PAGE STÍLUSOK */
+
+.payment-page {
+  padding: 40px 20px;
+  min-height: calc(100vh - 200px);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.payment-container {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 30px;
+}
+
+/* ÖSSZEGZÉS KÁRTYA */
+.order-summary {
+  background: linear-gradient(145deg, #1a1a1a, #222);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+  border: 1px solid #333;
+  height: fit-content;
+  position: sticky;
+  top: 20px;
+}
+
+.order-summary h2 {
+  color: #e50914;
+  font-size: 1.6rem;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.loading-payment {
+  text-align: center;
+  padding: 40px;
+  color: #ccc;
+}
+
+.loading-payment i {
+  font-size: 2rem;
+  color: #e50914;
+  margin-bottom: 15px;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 0;
+  border-bottom: 1px solid #333;
+  color: #ccc;
+}
+
+.summary-item strong {
+  color: #eee;
+}
+
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+  margin-top: 15px;
+  border-top: 2px solid #e50914;
+  font-size: 1.4rem;
+  color: #eee;
+  font-weight: bold;
+}
+
+.summary-total .amount {
+  color: #e50914;
+}
+
+/* FIZETÉSI FORM */
+.payment-form-card {
+  background: linear-gradient(145deg, #1a1a1a, #222);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+  border: 1px solid #333;
+}
+
+.payment-form-card h2 {
+  color: #e50914;
+  font-size: 1.6rem;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* FIZETÉSI MÓDOK */
+.payment-methods {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.payment-method {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px;
+  background: #2a2a2a;
+  border: 2px solid #333;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.payment-method input[type="radio"] {
+  display: none;
+}
+
+.payment-method i {
+  font-size: 1.5rem;
+  color: #ccc;
+}
+
+.payment-method span {
+  color: #ccc;
+  font-weight: bold;
+}
+
+.payment-method:hover {
+  border-color: #e50914;
+  background: #333;
+}
+
+.payment-method.active {
+  border-color: #e50914;
+  background: #e50914;
+}
+
+.payment-method.active i,
+.payment-method.active span {
+  color: white;
+}
+
+/* FORM MEZŐK */
+.payment-section {
+  margin-bottom: 25px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  color: #ccc;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.form-group label i {
+  color: #e50914;
+  margin-right: 8px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 14px;
+  background: #0d0d0d;
+  border: 2px solid #333;
+  border-radius: 8px;
+  color: #eee;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #e50914;
+  box-shadow: 0 0 10px rgba(229, 9, 20, 0.3);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+/* PAYPAL INFO */
+.paypal-info {
+  text-align: center;
+  padding: 40px;
+  background: #2a2a2a;
+  border-radius: 10px;
+}
+
+.paypal-info i {
+  font-size: 4rem;
+  color: #0070ba;
+  margin-bottom: 20px;
+}
+
+.paypal-info p {
+  color: #ccc;
+  font-size: 1.1rem;
+}
+
+/* BIZTONSÁGI INFO */
+.security-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  background: #1a5a1a;
+  border-radius: 8px;
+  margin-bottom: 25px;
+  color: #a8d5a8;
+}
+
+.security-info i {
+  font-size: 1.5rem;
+}
+
+/* FIZETÉS GOMB */
+.pay-button {
+  width: 100%;
+  background: linear-gradient(135deg, #e50914, #b20710);
+  color: white;
+  border: none;
+  padding: 18px;
+  border-radius: 12px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.pay-button:hover {
+  background: linear-gradient(135deg, #ff0a1a, #e50914);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(229, 9, 20, 0.5);
+}
+
+.pay-button i {
+  margin-right: 10px;
+}
+
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal.show {
+  display: flex;
+}
+
+.modal-content {
+  background: linear-gradient(145deg, #1a1a1a, #222);
+  padding: 50px;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 500px;
+  box-shadow: 0 15px 50px rgba(0,0,0,0.9);
+  border: 2px solid #333;
+}
+
+.success-icon {
+  margin-bottom: 25px;
+}
+
+.success-icon i {
+  font-size: 5rem;
+  color: #28a745;
+}
+
+.modal-content h2 {
+  color: #28a745;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.modal-content p {
+  color: #ccc;
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.btn-primary {
+  background: #e50914;
+  color: white;
+  border: none;
+  padding: 15px 40px;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: #b20710;
+  transform: translateY(-2px);
+}
+
+/* RESZPONZÍV */
+@media (max-width: 968px) {
+  .payment-container {
+    grid-template-columns: 1fr;
+  }
+
+  .order-summary {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .payment-methods {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-content {
+    padding: 30px;
+    margin: 20px;
+  }
+
+  .success-icon i {
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .payment-page {
+    padding: 20px 10px;
+  }
+
+  .payment-form-card,
+  .order-summary {
+    padding: 20px;
+  }
+
+  .payment-form-card h2,
+  .order-summary h2 {
+    font-size: 1.3rem;
+  }
+
+  .pay-button {
+    font-size: 1.1rem;
+    padding: 15px;
+  }
+}
