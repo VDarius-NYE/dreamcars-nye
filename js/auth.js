@@ -54,7 +54,7 @@
 
       // Regisztráció link cseréje kijelentkezés linkre
       if (registerLink) {
-        registerLink.textContent = '🚪 Kijelentkezés';
+        registerLink.textContent = 'Kijelentkezés';
         registerLink.href = '#';
         registerLink.onclick = function(e) {
           e.preventDefault();
