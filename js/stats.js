@@ -13,7 +13,6 @@
         return;
       }
       
-      // Animált számlálás
       animateCounter('stat-users', 0, stats.users, 2000);
       animateCounter('stat-bookings', 0, stats.bookings, 2000);
       animateCounter('stat-cars', 0, stats.cars, 2000);
@@ -23,13 +22,12 @@
     }
   }
 
-  // Animált számláló
   function animateCounter(elementId, start, end, duration) {
     const element = document.getElementById(elementId);
     if (!element) return;
     
     const range = end - start;
-    const increment = range / (duration / 16); // 60 FPS
+    const increment = range / (duration / 16);
     let current = start;
     
     const timer = setInterval(function() {
@@ -42,9 +40,7 @@
     }, 16);
   }
 
-  // Automatikus betöltés
   document.addEventListener('DOMContentLoaded', function() {
-    // Csak akkor töltse be ha van stats szekció
     if (document.querySelector('.stats-section')) {
       loadStats();
     }

@@ -1,6 +1,4 @@
-// admin.js - Admin Panel Logika
 document.addEventListener('DOMContentLoaded', function() {
-  // Admin jogosultság ellenőrzése
   setTimeout(function() {
     if (!window.DreamCarsAuth.isLoggedIn) {
       alert('Ehhez az oldalhoz be kell jelentkezned!');
@@ -15,7 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }, 500);
 
-  // Kép előnézet
   const imgInput = document.getElementById('img');
   const previewContainer = document.getElementById('preview-container');
   const imgPreview = document.getElementById('img-preview');
@@ -25,7 +22,6 @@ document.addEventListener('DOMContentLoaded', function() {
       const file = e.target.files[0];
       
       if (file) {
-        // Fájlméret ellenőrzés (max 5MB)
         if (file.size > 5 * 1024 * 1024) {
           alert('A fájl túl nagy! Maximum 5MB lehet.');
           imgInput.value = '';
@@ -33,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
           return;
         }
 
-        // Előnézet megjelenítése
         const reader = new FileReader();
         reader.onload = function(event) {
           imgPreview.src = event.target.result;
@@ -46,7 +41,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Form validáció
   const form = document.getElementById('add-car-form');
   
   if (form) {
@@ -54,7 +48,6 @@ document.addEventListener('DOMContentLoaded', function() {
       const evjarat = parseInt(document.getElementById('evjarat').value);
       const ar = parseInt(document.getElementById('ar').value);
       
-      // Évjárat ellenőrzés
       const currentYear = new Date().getFullYear();
       if (evjarat < 1900 || evjarat > currentYear + 1) {
         e.preventDefault();
@@ -62,14 +55,12 @@ document.addEventListener('DOMContentLoaded', function() {
         return false;
       }
 
-      // Ár ellenőrzés
       if (ar < 0 || ar > 10000000) {
         e.preventDefault();
         alert('Az ár 0 és 10,000,000 Ft között kell legyen!');
         return false;
       }
 
-      // Kép ellenőrzés
       if (!imgInput.files || imgInput.files.length === 0) {
         e.preventDefault();
         alert('Kérlek tölts fel egy képet!');

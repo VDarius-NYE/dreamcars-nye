@@ -1,7 +1,6 @@
 <?php
 require_once 'session_handler.php';
 
-// Ha már be van jelentkezve, irányítsuk át
 redirectIfLoggedIn();
 
 $servername = "localhost";
@@ -30,17 +29,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->fetch();
 
         if (password_verify($password, $hashedPassword)) {
-            // Session létrehozása
             $_SESSION["user_id"] = $id;
             $_SESSION["fullname"] = $fullname;
             $_SESSION["email"] = $userEmail;
             $_SESSION["isAdmin"] = $isAdmin;
             $_SESSION["login_time"] = time();
 
-            // Redirect kezelés
             $redirect = isset($_GET['redirect']) ? $_GET['redirect'] : '../html/index.html';
             
-            // URL paraméterrel jelezzük a sikeres bejelentkezést
             $separator = strpos($redirect, '?') !== false ? '&' : '?';
             $redirectUrl = $redirect . $separator . 'login=success';
             

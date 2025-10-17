@@ -1,7 +1,6 @@
 <?php
 require_once 'session_handler.php';
 
-// Admin jogosultság ellenőrzése
 requireAdmin();
 
 $servername = "localhost";
@@ -17,7 +16,6 @@ if ($conn->connect_error) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // POST adatok fogadása
     $marka = trim($_POST["marka"]);
     $nev = trim($_POST["nev"]);
     $desc = trim($_POST["desc"]);
@@ -25,7 +23,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $uzemanyag = (int)$_POST["uzemanyag"];
     $ar = (int)$_POST["ar"];
 
-    // Validációk
     if (empty($marka) || empty($nev) || empty($desc)) {
         echo "<script>alert('Minden mező kitöltése kötelező!'); window.history.back();</script>";
         exit();
@@ -41,7 +38,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    // Kép feltöltés kezelése
     if (isset($_FILES['img']) && $_FILES['img']['error'] == 0) {
         $allowed_types = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
         $max_size = 5 * 1024 * 1024; // 5MB
@@ -51,34 +47,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $file_tmp = $_FILES['img']['tmp_name'];
         $file_name = $_FILES['img']['name'];
 
-        // Fájl típus ellenőrzés
         if (!in_array($file_type, $allowed_types)) {
             echo "<script>alert('Csak JPG, PNG és WEBP képek engedélyezettek!'); window.history.back();</script>";
             exit();
         }
 
-        // Fájlméret ellenőrzés
         if ($file_size > $max_size) {
             echo "<script>alert('A kép mérete maximum 5MB lehet!'); window.history.back();</script>";
             exit();
         }
 
-        // Egyedi fájlnév generálása
         $file_extension = pathinfo($file_name, PATHINFO_EXTENSION);
         $new_file_name = strtolower($marka) . '_' . strtolower(str_replace(' ', '_', $nev)) . '_' . time() . '.' . $file_extension;
         
-        // Cél mappa
         $upload_dir = '../assets/listImg/';
         $upload_path = $upload_dir . $new_file_name;
 
-        // Mappa létrehozása ha nem létezik
         if (!file_exists($upload_dir)) {
             mkdir($upload_dir, 0777, true);
         }
 
-        // Fájl mozgatása
         if (move_uploaded_file($file_tmp, $upload_path)) {
-            // Adatbázisba mentés
             $stmt = $conn->prepare("INSERT INTO cars (marka, nev, img, `desc`, evjarat, uzemanyag, ar) VALUES (?, ?, ?, ?, ?, ?, ?)");
             $stmt->bind_param("ssssiis", $marka, $nev, $new_file_name, $desc, $evjarat, $uzemanyag, $ar);
 
