@@ -3,48 +3,99 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DreamCars Project</title>
-  <link rel="icon" type="png" href="../assets/favicon.png">
-
+  <title>Autóink - DreamCars Project</title>
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
   <link rel="stylesheet" href="../css/style.css">
+  <meta name="description" content="Böngéssz autóink között és találd meg az álmaid autóját!">
 </head>
 <body>
 
   <header>
     <h1>Autóink</h1>
-     <nav>
-      <a href="index.html">Kezdőlap</a>
-      <a href="cars.html">Autók</a>
-      <a href="booking.html">Foglalás</a>
-      <a href="login.html">Bejelentkezés</a>
-      <a href="register.html">Regisztráció</a>
+    <nav>
+      <div class="menu-toggle" id="menu-toggle">☰</div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Kezdőlap</a></li>
+        <li><a href="cars.html" class="active">Autók</a></li>
+        <li><a href="booking.html">Foglalás</a></li>
+        <li><a href="login.html">Bejelentkezés</a></li>
+        <li><a href="register.html">Regisztráció</a></li>
+      </ul>
     </nav>
   </header>
 
-  <main>
+  <main class="cars-page">
     <section class="car-selector">
-  <h2>Válassz autót</h2>
-  <select id="car-select">
-    <option value="" selected disabled>Válassz egy autót...</option>
-    <option value="gt-r">Nissan GT-R</option>
-    <option value="bmw-m4">BMW M4</option>
-    <option value="ford-mustang">Ford Mustang</option>
-  </select>
+      <h2>Válassz márkát</h2>
 
-  <div id="car-details" class="car-details">
-    <!-- Itt jelenik meg a részletes leírás -->
-  </div>
+      <!-- Márka választó -->
+      <select id="brand-select" aria-label="Márka választása">
+        <option value="" selected disabled>Válassz egy márkát...</option>
+      </select>
 
-  <button id="book-btn" class="booking-btn" style="display:none;">
-  Foglalás
-</button>
-</section>
+      <!-- Szűrő panel -->
+      <div id="filter-panel" style="display:none; margin-top:20px;">
+        <h3>Szűrők</h3>
+        
+        <div class="filter-group">
+          <label for="fuel-filter">Üzemanyag típus:</label>
+          <select id="fuel-filter" aria-label="Üzemanyag szűrő">
+            <option value="">Összes</option>
+            <option value="1">Benzin</option>
+            <option value="2">Dízel</option>
+            <option value="3">Elektromos</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label for="year-filter">Évjárat:</label>
+          <select id="year-filter" aria-label="Évjárat szűrő">
+            <option value="">Összes</option>
+            <option value="2025">2025</option>
+            <option value="2024">2024</option>
+            <option value="2023">2023</option>
+            <option value="2022">2022</option>
+            <option value="2021">2021</option>
+            <option value="2020">2020</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label for="price-filter">Maximális ár (Ft/nap):</label>
+          <input 
+            type="number" 
+            id="price-filter" 
+            placeholder="pl. 100000"
+            min="0"
+            step="1000"
+            aria-label="Ár szűrő"
+          >
+        </div>
+      </div>
+
+      <!-- Autók megjelenítése -->
+      <div id="car-details" class="car-details-grid">
+        <div class="empty-message">
+          <p>🚗 Válassz egy márkát a keresés megkezdéséhez!</p>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
     <p>© 2025 DreamCars Project – Minden jog fenntartva</p>
   </footer>
 
-    <script src="../js/cars.js"></script>
+  <!-- JavaScript betöltése -->
+  <script src="../js/auth.js"></script>
+  <script src="../js/cars.js" defer></script>
+  
+  <!-- Hamburger menü script -->
+  <script>
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+      const navLinks = document.getElementById('nav-links');
+      navLinks.classList.toggle('show');
+    });
+  </script>
 </body>
 </html>

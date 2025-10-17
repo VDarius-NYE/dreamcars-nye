@@ -4,45 +4,58 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Regisztráció - DreamCars Project</title>
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <header>
-        <h1>DreamCars Project</h1>
-        <nav>
-            <div class="menu-toggle" id="menu-toggle">☰</div>
-            <ul class="nav-links" id="nav-links">
-            <li><a href="index.html">Kezdőlap</a></li>
-            <li><a href="cars.html">Autók</a></li>
-            <li><a href="booking.html">Foglalás</a></li>
-            <li><a href="login.html">Bejelentkezés</a></li>
-            <li><a href="register.html">Regisztráció</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header>
+    <h1>DreamCars Project</h1>
+    <nav>
+      <div class="menu-toggle" id="menu-toggle">☰</div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Kezdőlap</a></li>
+        <li><a href="cars.html">Autók</a></li>
+        <li><a href="booking.html">Foglalás</a></li>
+        <li><a href="login.html">Bejelentkezés</a></li>
+        <li><a href="register.html" class="active">Regisztráció</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <main>
-        <div class="form-container">
-        <h2>Regisztráció</h2>
-        <form action="../php/register.php" method="POST">
-            <label for="fullname">Teljes név:</label>
-            <input type="text" id="fullname" name="fullname" required>
+  <main>
+    <div class="form-container">
+      <h2>Regisztráció</h2>
+      <form action="../php/register.php" method="POST">
+        <label for="fullname">Teljes név:</label>
+        <input type="text" id="fullname" name="fullname" required minlength="3">
 
-            <label for="email">Email cím:</label>
-            <input type="email" id="email" name="email" required>
+        <label for="email">Email cím:</label>
+        <input type="email" id="email" name="email" required>
 
-            <label for="password">Jelszó:</label>
-            <input type="password" id="password" name="password" required>
+        <label for="password">Jelszó:</label>
+        <input type="password" id="password" name="password" required minlength="6">
 
-            <button type="submit">Regisztráció</button>
-            <p class="redirect-text">Már van fiókod? <a href="../html/login.html">Jelentkezz be</a></p>
-        </form>
-        </div>
-    </main>
+        <button type="submit">Regisztráció</button>
+        <p class="redirect-text">Már van fiókod? <a href="login.html">Jelentkezz be</a></p>
+      </form>
+    </div>
+  </main>
 
-    <footer>
-        <p>© 2025 DreamCars Project – Minden jog fenntartva</p>
-    </footer>
-    <script src="../js/main.js"></script>
+  <footer>
+    <p>© 2025 DreamCars Project – Minden jog fenntartva</p>
+  </footer>
+
+  <script src="../js/auth.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+    // Ha már be van jelentkezve, irányítsuk át
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        if (window.DreamCarsAuth && window.DreamCarsAuth.isLoggedIn) {
+          window.location.href = 'index.html';
+        }
+      }, 500);
+    });
+  </script>
 </body>
 </html>
