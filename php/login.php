@@ -20,13 +20,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = trim($_POST["email"]);
     $password = $_POST["password"];
 
-    $stmt = $conn->prepare("SELECT id, fullname, email, password FROM users WHERE email=?");
+    $stmt = $conn->prepare("SELECT id, fullname, email, password, isAdmin FROM users WHERE email=?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $stmt->store_result();
 
     if ($stmt->num_rows > 0) {
-        $stmt->bind_result($id, $fullname, $userEmail, $hashedPassword);
+        $stmt->bind_result($id, $fullname, $userEmail, $hashedPassword, $isAdmin);
         $stmt->fetch();
 
         if (password_verify($password, $hashedPassword)) {
@@ -34,6 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["user_id"] = $id;
             $_SESSION["fullname"] = $fullname;
             $_SESSION["email"] = $userEmail;
+            $_SESSION["isAdmin"] = $isAdmin;
             $_SESSION["login_time"] = time();
 
             // Redirect kezelés

@@ -42,23 +42,29 @@
     if (window.DreamCarsAuth.isLoggedIn && window.DreamCarsAuth.user) {
       // Ha be van jelentkezve
       const userName = window.DreamCarsAuth.user.fullname;
+      const isAdmin = window.DreamCarsAuth.user.isAdmin == 1;
 
       // Bejelentkezés link cseréje profil linkre
       if (loginLink) {
-        loginLink.textContent = '👤 ' + userName;
+        loginLink.textContent = '👤 ' + userName + (isAdmin ? ' (Admin)' : '');
         loginLink.href = '#';
-        loginLink.style.color = '#e50914';
+        loginLink.style.color = isAdmin ? '#ffd700' : '#e50914';
         loginLink.style.cursor = 'default';
       }
 
       // Regisztráció link cseréje kijelentkezés linkre
       if (registerLink) {
-        registerLink.textContent = 'Kijelentkezés';
+        registerLink.textContent = '🚪 Kijelentkezés';
         registerLink.href = '#';
         registerLink.onclick = function(e) {
           e.preventDefault();
           logout();
         };
+      }
+
+      // Admin panel link hozzáadása ha admin
+      if (isAdmin) {
+        addAdminLink(navLinks);
       }
     } else {
       // Ha nincs bejelentkezve, állítsuk vissza az eredeti állapotot
@@ -74,6 +80,28 @@
         registerLink.href = 'register.html';
         registerLink.onclick = null;
       }
+    }
+  }
+
+  // Admin link hozzáadása
+  function addAdminLink(navLinks) {
+    // Ellenőrizzük, hogy már nincs-e Admin link
+    if (navLinks.querySelector('a[href*="admin.html"]')) return;
+
+    // Keressük meg a Foglalás linket
+    const bookingLink = navLinks.querySelector('a[href*="booking.html"]');
+    
+    if (bookingLink && bookingLink.parentElement) {
+      // Hozzunk létre új li elemet
+      const adminLi = document.createElement('li');
+      const adminLink = document.createElement('a');
+      adminLink.href = 'admin.html';
+      adminLink.textContent = 'Admin Panel';
+      adminLink.style.color = '#ffd700';
+      adminLi.appendChild(adminLink);
+      
+      // Beszúrás a Foglalás után
+      bookingLink.parentElement.parentNode.insertBefore(adminLi, bookingLink.parentElement.nextSibling);
     }
   }
 
@@ -123,9 +151,9 @@
     // Ellenőrizzük van-e login=success paraméter
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('login') === 'success') {
-      // Várunk egy kicsit hogy a session biztosan beálljon
+      // Force refresh a session-nel
       setTimeout(function() {
-        checkSession().then(function(data) {
+        checkSession(true).then(function(data) {
           if (data.loggedIn && data.user) {
             alert('Sikeres bejelentkezés! Üdvözöljük, ' + data.user.fullname + '!');
           }

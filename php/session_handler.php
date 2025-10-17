@@ -16,10 +16,24 @@ function getUserData() {
         return [
             'id' => $_SESSION['user_id'],
             'fullname' => $_SESSION['fullname'] ?? 'Felhasználó',
-            'email' => $_SESSION['email'] ?? ''
+            'email' => $_SESSION['email'] ?? '',
+            'isAdmin' => $_SESSION['isAdmin'] ?? 0
         ];
     }
     return null;
+}
+
+// Admin jogosultság ellenőrzése
+function isAdmin() {
+    return isLoggedIn() && isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1;
+}
+
+// Admin oldal védelem
+function requireAdmin() {
+    if (!isAdmin()) {
+        header('Location: ../html/index.html');
+        exit();
+    }
 }
 
 // Kijelentkezés
