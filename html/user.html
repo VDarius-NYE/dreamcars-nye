@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profilom - DreamCars</title>
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/user.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <header>
+    <h1>Profilom</h1>
+    <nav>
+      <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Kezdolap</a></li>
+        <li><a href="cars.html">Autok</a></li>
+        <li><a href="booking.html">Foglalas</a></li>
+        <li><a href="login.html">Bejelentkezes</a></li>
+        <li><a href="register.html">Regisztracio</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="user-page">
+    <div class="user-container">
+      
+      <!-- Profil adatok -->
+      <div class="profile-card">
+        <div class="profile-header">
+          <div class="profile-icon">
+            <i class="fas fa-user-circle"></i>
+          </div>
+          <h2 id="user-fullname">Betoltes...</h2>
+          <p id="user-email-display">email@example.com</p>
+        </div>
+
+        <!-- Tabs -->
+        <div class="profile-tabs">
+          <button class="tab-btn active" data-tab="details">
+            <i class="fas fa-user"></i> Adataim
+          </button>
+          <button class="tab-btn" data-tab="bookings">
+            <i class="fas fa-calendar-check"></i> Foglalasaim
+          </button>
+          <button class="tab-btn" data-tab="security">
+            <i class="fas fa-lock"></i> Biztonsag
+          </button>
+        </div>
+
+        <!-- Tab tartalmak -->
+        <div class="tab-content active" id="details-tab">
+          <h3><i class="fas fa-id-card"></i> Személyes adatok</h3>
+          <form id="profile-form">
+            <div class="form-group">
+              <label for="fullname">
+                <i class="fas fa-user"></i> Teljes nev
+              </label>
+              <input type="text" id="fullname" required>
+            </div>
+
+            <div class="form-group">
+              <label for="email">
+                <i class="fas fa-envelope"></i> Email cim
+              </label>
+              <input type="email" id="email" required>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">
+                <i class="fas fa-phone"></i> Telefonszam
+              </label>
+              <input type="tel" id="phone" placeholder="pl. +36 20 123 4567">
+            </div>
+
+            <button type="submit" class="btn-save">
+              <i class="fas fa-save"></i> Mentes
+            </button>
+          </form>
+        </div>
+
+        <div class="tab-content" id="bookings-tab">
+          <h3><i class="fas fa-calendar"></i> Foglalasaim</h3>
+          
+          <div class="bookings-section">
+            <h4>Jovobeli foglalasok</h4>
+            <div id="future-bookings" class="bookings-list">
+              <div class="loading"><i class="fas fa-spinner fa-spin"></i> Betoltes...</div>
+            </div>
+          </div>
+
+          <div class="bookings-section">
+            <h4>Korabbi foglalasok</h4>
+            <div id="past-bookings" class="bookings-list">
+              <div class="loading"><i class="fas fa-spinner fa-spin"></i> Betoltes...</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content" id="security-tab">
+          <h3><i class="fas fa-key"></i> Jelszo modositas</h3>
+          <form id="password-form">
+            <div class="form-group">
+              <label for="current-password">
+                <i class="fas fa-lock"></i> Jelenlegi jelszo
+              </label>
+              <input type="password" id="current-password" required>
+            </div>
+
+            <div class="form-group">
+              <label for="new-password">
+                <i class="fas fa-lock"></i> Uj jelszo
+              </label>
+              <input type="password" id="new-password" required minlength="6">
+            </div>
+
+            <div class="form-group">
+              <label for="confirm-password">
+                <i class="fas fa-lock"></i> Uj jelszo megerositese
+              </label>
+              <input type="password" id="confirm-password" required minlength="6">
+            </div>
+
+            <button type="submit" class="btn-save">
+              <i class="fas fa-key"></i> Jelszo modositasa
+            </button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 DreamCars Project - Minden jog fenntartva</p>
+  </footer>
+
+  <script src="../js/auth.js"></script>
+  <script src="../js/user.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

@@ -40,10 +40,10 @@
       const isAdmin = window.DreamCarsAuth.user.isAdmin == 1;
 
       if (loginLink) {
-        loginLink.textContent = '👤 ' + userName + (isAdmin ? ' (Admin)' : '');
-        loginLink.href = '#';
-        loginLink.style.color = isAdmin ? '#ffd700' : '#e50914';
-        loginLink.style.cursor = 'default';
+          loginLink.textContent = '👤 ' + userName + (isAdmin ? ' (Admin)' : '');
+          loginLink.href = 'user.html'; 
+          loginLink.style.color = isAdmin ? '#ffd700' : '#e50914';
+          loginLink.style.cursor = 'pointer';
       }
 
       if (registerLink) {
